@@ -66,12 +66,6 @@ class ShiftCipher {
       }
     };
 
-cipher = new ShiftCipher(2);
-
-const cryptoPhrase = cipher.encrypt('Va se lascar');
-console.log(cryptoPhrase);
-
-
 //Definição das variáveis associadas aos elementos HTML:
 var mensagemACriptografar = document.getElementById('mens-a-criptografar');
 var numDigitosParaAvancar = document.getElementById('qtde-digitos');
