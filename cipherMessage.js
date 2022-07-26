@@ -76,6 +76,6 @@ const botaoVerMens = document.getElementById('ver-mens');
 
 //Declaração das funções para tornar o site funcional:
 botaoGerarMens.addEventListener('click', () => {
-    let cipher = new ShiftCipher(numDigitosParaAvancar.value);
+    let cipher = new ShiftCipher(Number(numDigitosParaAvancar.value));
     mensagemCriptografada.innerHTML = cipher.encrypt(mensagemACriptografar.value);
 })  
