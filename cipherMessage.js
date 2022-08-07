@@ -56,7 +56,7 @@ class ShiftCipher {
             decArrOfCharCodes.push(arrOfEncCodes[j] - this._value);
           }
         } else {
-          decArrOfCharCodes.push(arrOfEncCodes[j]);
+            decArrOfCharCodes.push(arrOfEncCodes[j]);
         }
       };
       for (let k = 0; k < decArrOfCharCodes.length; k++) {
@@ -67,15 +67,73 @@ class ShiftCipher {
     };
 
 //Definição das variáveis associadas aos elementos HTML:
+var verMensagemParaCriptografar = document.getElementById("ver-mens-a-criptografar");
 var mensagemACriptografar = document.getElementById('mens-a-criptografar');
 var numDigitosParaAvancar = document.getElementById('qtde-digitos');
 var mensagemCriptografada = document.getElementById('mens-cripto');
 var mensOQueFazerComIsso = document.getElementById('recomendacao');
-const botaoGerarMens = document.getElementById('gerar-mens');
-const botaoVerMens = document.getElementById('ver-mens');
+const botaoPostarMens = document.getElementById('postar-mens');
+const botaoVerMens = document.getElementById('cripto-mens');
+var cipher;
+const LoadingBar = document.getElementById('theInsideLoadBar');
+const OutterLoadingBar = document.getElementById('theOutsideLoadBar');
+var loadingTxt = document.getElementById("loadingTxt");
 
+//Function to modify the website dinamically;
+const modificarElementos = (tempo, func) => {
+  return new Promise ((resolve, reject) => {
+    setTimeout(() => {
+      resolve(func());
+    }, tempo)
+  }) 
+};
+
+botaoPostarMens.onclick = () => {
+  verMensagemParaCriptografar.innerHTML = mensagemACriptografar.value;
+  cipher = new ShiftCipher(Number(numDigitosParaAvancar.value))
+}
+
+//The main async function make this webapp purpose possible:
+async function encryptItNow() {
+  let firstAction = await modificarElementos(0, () => {
+    OutterLoadingBar.style.display = 'block';
+  });
+  console.log(firstAction);
+  let secondAction = await modificarElementos(500, () => {
+    LoadingBar.style.width = '100%';
+  });
+  console.log(secondAction);
+  let thirdAction = await modificarElementos(300, () => {
+    loadingTxt.innerHTML = 'Loading';
+  });
+  console.log(thirdAction);
+  let fourthAction = await modificarElementos(1300, () => {
+    mensagemCriptografada.innerHTML = cipher.encrypt((verMensagemParaCriptografar.innerHTML).toString());
+    mensOQueFazerComIsso.innerHTML = 'Compartilhe a mensagem com um amigo junto com o número que colocou para criptografar!';
+    mensOQueFazerComIsso.style.display = 'block';
+  });
+  console.log(fourthAction);
+  let finalAction = await modificarElementos(200, () => {
+    OutterLoadingBar.style.display = 'none';
+    LoadingBar.style.width = '0%';
+    loadingTxt.innerHTML = '';
+  });
+  console.log(finalAction);
+}
+
+botaoVerMens.addEventListener('click', encryptItNow);
+
+//Now, to decrypt it:
+
+
+/*
 //Declaração das funções para tornar o site funcional:
-botaoGerarMens.addEventListener('click', () => {
-    let cipher = new ShiftCipher(Number(numDigitosParaAvancar.value));
-    mensagemCriptografada.innerHTML = cipher.encrypt(mensagemACriptografar.value);
-})  
+botaoPostarMens.onclick = () => {
+    verMensagemParaCriptografar.innerHTML = mensagemACriptografar.value;
+    cipher = new ShiftCipher(Number(numDigitosParaAvancar.value))
+}
+
+botaoVerMens.onclick = () => {
+    mensagemCriptografada.innerHTML = cipher.encrypt((verMensagemParaCriptografar.innerHTML).toString());
+}
+*/

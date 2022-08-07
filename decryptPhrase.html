@@ -9,52 +9,52 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500&display=swap');
     </style>
-    <script src="./cipherMessage.js" defer></script>
+    <script src="./decipherMessage.js" defer></script>
 </head>
 <body>
     <div class="header">
         <header>
-            <h1>Criptografe sua Mensagem aqui:</h1>
+            <h1>Descriptografe sua Mensagem aqui:</h1>
         </header>
     </div>
     <div class="crypto-form">
         <form method="GET">
-            <label for="mens-a-criptografar">Digite a sua mensagem aqui:</label><br>
-            <input type="text" id="mens-a-criptografar" name="mens-a-criptografar">
+            <label for="mens-a-descriptografar">Digite a mensagem criptografada aqui:</label><br>
+            <input type="text" id="mens-a-descriptografar" name="mens-a-descriptografar">
             <hr>
             <br>
-            <label for="qtde-digitos">Digite a quantidade de digitos para avançar em cada letra:</label><br>
-            <input type="number" id="qtde-digitos" name="qtde-digitos" min="1" max="7" step="1">
+            <label for="qtde-digitos-dec">Digite o número que o seu amigo te passou:</label><br>
+            <input type="number" id="qtde-digitos-dec" name="qtde-digitos-dec" min="1" max="7" step="1">
             <hr>
             <br>
-            <p>Mensagem para criptografar:</p>
+            <p>Mensagem para descriptografar:</p>
             <section>
-                <p id="ver-mens-a-criptografar"></p>
+                <p id="ver-mens-a-descriptografar"></p>
             </section>
-            <p>Mensagem criptografada:</p>
+            <p>Mensagem descriptografada:</p>
             <section>
-                <p id="mens-cripto"></p>
+                <p id="mens-descripto"></p>
             </section>
             <section>
-                <p id="recomendacao"></p>
+                <p id="mens-usuario"></p>
             </section>
         </form>
-            <div class="outsideLoadBar" id="theOutsideLoadBar">
-                <div class="insideLoadBar" id="theInsideLoadBar" hidden><p id="loadingTxt"></p></div>
-            </div>
+        <div class="outsideLoadBar" id="theOutsideLoadBar">
+            <div class="insideLoadBar" id="theInsideLoadBar" hidden><p id="loadingTxt"></p></div>
+        </div>
         <div class="flex">
-            <section id="postar-mens">
-                <p>Postar mensagem</p>
+            <section id="posted-encrypted-mens">
+                <p>Postar criptografia</p>
             </section>
-            <section id="cripto-mens">
-                <p>Criptografar mensagem</p>
+            <section id="decrypted-mens">
+                <p>Descriptografar mensagem</p>
             </section>
         </div>
 
     </div>
     <div class="nav">
         <section class="link">
-            <p><a href="./decryptPhrase.html">Descriptografar Mensagem</a></p>
+            <p><a href="./index.html">Criptografar Mensagem</a></p>
         </section>
         <section class="link">
             <p><a href="https://github.com/gilbmporto/">Quem Sou</a></p>
