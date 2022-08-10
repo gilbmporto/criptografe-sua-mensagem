@@ -162,3 +162,15 @@ h1 {
     align-items: center;
     justify-content: center;
 }
+
+a:link {
+    color: white;
+}
+
+a:visited {
+    color: aqua;
+}
+
+a:hover {
+    color: hotpink;
+}
